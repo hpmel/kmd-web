@@ -5,12 +5,10 @@ import { Navbar } from './Navbar';
 import kmdLogo from '../assets/Web-kmd-logo-noBG.png';
 import type { Language } from '../utils/translations';
 
-const bookingUrl = import.meta.env.VITE_BOOKING_URL?.trim() || 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aA5QHBnUOcY5FzTL32DlCCfagpAj66nOvUFk1vMxSXnGPJapz1HnY2ucZ-RRVXH1h-_FZujLv';
+const bookingUrl = import.meta.env.VITE_BOOKING_URL?.trim() || 'https://cal.com/kmdweb/consultation-gratuite';
+const calEmbedUrl = bookingUrl + (bookingUrl.includes('?') ? '&' : '?') + 'embed=true&theme=dark';
 const displayEmailAddress = 'kmd@kmdweb.ca';
 const deliveryEmailAddress = 'desrochersmelanie@gmail.com';
-const emailRequestUrl = 'mailto:' + deliveryEmailAddress + '?subject=' + encodeURIComponent('Consultation gratuite KMD Web') + '&body=' + encodeURIComponent(
-  'Bonjour Mélanie,\n\nJe souhaite réserver une consultation gratuite.\n\nMon entreprise :\nMon principal défi numérique :\nMes disponibilités :\n\nMerci!',
-);
 
 const copy = {
   fr: {
@@ -38,7 +36,7 @@ const copy = {
     panelLabel: 'Réserver maintenant',
     panelTitle: 'Votre première conversation commence ici.',
     panelText: 'Choisissez une plage de 30 minutes. Vous recevrez ensuite les détails de la visioconférence par courriel.',
-    panelConfigured: 'Le calendrier sécurisé s’ouvrira dans un nouvel onglet.',
+    panelConfigured: 'Réservez directement ci-dessous ou ouvrez le calendrier dans un nouvel onglet.',
     panelFallback: 'Le calendrier automatique sera activé dès que votre agenda sera connecté. Pour l’instant, envoyez votre demande et je vous proposerai des disponibilités.',
     included: ['Consultation individuelle', 'Recommandations adaptées', 'Aucune préparation requise'],
     contact: 'Une question avant de réserver?',
@@ -71,7 +69,7 @@ const copy = {
     panelLabel: 'Book now',
     panelTitle: 'Your first conversation starts here.',
     panelText: 'Choose a 30-minute time slot. You will receive the video-call details by email.',
-    panelConfigured: 'The secure calendar will open in a new tab.',
+    panelConfigured: 'Book directly below or open the calendar in a new tab.',
     panelFallback: 'Automatic scheduling will be enabled once your calendar is connected. For now, send your request and I will suggest available times.',
     included: ['One-on-one consultation', 'Tailored recommendations', 'No preparation required'],
     contact: 'A question before booking?',
@@ -99,7 +97,6 @@ function BookingReveal({ children, className = '', delay = 0 }: { children: Reac
 export function BookingPage({ lang, setLang }: { lang: Language; setLang: (lang: Language) => void }) {
   const t = copy[lang];
   const reduceMotion = useReducedMotion();
-  const reservationUrl = bookingUrl || emailRequestUrl;
 
   useEffect(() => {
     document.title = lang === 'fr' ? 'Consultation gratuite | KMD Web' : 'Free consultation | KMD Web';
@@ -174,19 +171,26 @@ export function BookingPage({ lang, setLang }: { lang: Language; setLang: (lang:
         </section>
 
         <section id="reserve" className="booking-reserve" aria-labelledby="reserve-title">
-          <BookingReveal className="reservation-panel">
-            <div>
+          <BookingReveal className="reservation-panel reservation-panel-with-calendar">
+            <div className="reservation-summary">
               <p className="section-label"><span aria-hidden="true" />{t.panelLabel}</p>
               <h2 id="reserve-title">{t.panelTitle}</h2>
               <p>{t.panelText}</p>
               <ul>{t.included.map((item) => <li key={item}><Check size={16} aria-hidden="true" />{item}</li>)}</ul>
             </div>
-            <div className="reservation-action">
-              <CalendarDays size={34} aria-hidden="true" />
-              <a className="button button-primary" href={reservationUrl} target={bookingUrl ? '_blank' : undefined} rel={bookingUrl ? 'noreferrer' : undefined}>
-                {bookingUrl ? t.book : t.emailBook}<ArrowUpRight size={18} aria-hidden="true" />
-              </a>
-              <p>{bookingUrl ? t.panelConfigured : t.panelFallback}</p>
+            <div className="cal-embed-wrap">
+              <iframe
+                className="cal-embed-frame"
+                src={calEmbedUrl}
+                title={lang === 'fr' ? 'Calendrier de réservation KMD Web' : 'KMD Web booking calendar'}
+                loading="lazy"
+              />
+              <div className="cal-embed-fallback">
+                <p><CalendarDays size={18} aria-hidden="true" />{t.panelConfigured}</p>
+                <a className="button button-secondary" href={bookingUrl} target="_blank" rel="noreferrer">
+                  {lang === 'fr' ? 'Ouvrir le calendrier' : 'Open calendar'}<ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </BookingReveal>
 
