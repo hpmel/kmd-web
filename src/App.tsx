@@ -494,7 +494,7 @@ function App() {
         <div className="w-full md:w-1/2 flex flex-col justify-between p-10 sm:p-16 bg-[#000]">
           <div className="flex flex-col gap-10">
             <div className="flex items-center select-none">
-              <img src={kmdLogo} alt="KMD Logo" className="h-16 sm:h-20 w-auto object-contain opacity-80" />
+              <img src={kmdLogo} alt="KMD Logo" className="h-11 sm:h-14 w-auto object-contain opacity-80" />
             </div>
             <p className="text-white/40 text-[18px] sm:text-[22px] leading-relaxed max-w-lg">
               {t.footerDesc}

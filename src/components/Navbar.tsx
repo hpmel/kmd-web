@@ -103,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ entranceComplete, lang, setLang 
         <motion.img 
           src={kmdLogo} 
           alt="KMD Logo" 
-          className="h-36 sm:h-60 w-auto object-contain select-none cursor-pointer"
+          className="h-25 sm:h-42 w-auto object-contain select-none cursor-pointer"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
