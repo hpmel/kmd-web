@@ -5,7 +5,7 @@ import { Navbar } from './Navbar';
 import kmdLogo from '../assets/Web-kmd-logo-noBG.png';
 import type { Language } from '../utils/translations';
 
-const bookingUrl = import.meta.env.VITE_BOOKING_URL?.trim();
+const bookingUrl = import.meta.env.VITE_BOOKING_URL?.trim() || 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0aA5QHBnUOcY5FzTL32DlCCfagpAj66nOvUFk1vMxSXnGPJapz1HnY2ucZ-RRVXH1h-_FZujLv';
 const displayEmailAddress = 'kmd@kmdweb.ca';
 const deliveryEmailAddress = 'desrochersmelanie@gmail.com';
 const emailRequestUrl = 'mailto:' + deliveryEmailAddress + '?subject=' + encodeURIComponent('Consultation gratuite KMD Web') + '&body=' + encodeURIComponent(
