@@ -1598,3 +1598,88 @@ video {
     text-align: left;
   }
 }
+
+
+/* Embedded Cal.com scheduler */
+.reservation-panel-with-calendar {
+  max-width: 92rem;
+  grid-template-columns: minmax(18rem, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.reservation-summary {
+  align-self: start;
+  padding: clamp(0.5rem, 2vw, 1.5rem) 0;
+}
+
+.cal-embed-wrap {
+  min-width: 0;
+  overflow: hidden;
+  background: #101010;
+  border: 1px solid rgba(255, 59, 141, 0.24);
+  border-radius: 1rem;
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.34);
+}
+
+.cal-embed-frame {
+  display: block;
+  width: 100%;
+  min-height: 760px;
+  color-scheme: dark;
+  background: #101010;
+  border: 0;
+}
+
+.cal-embed-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cal-embed-fallback > p {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.cal-embed-fallback svg {
+  flex: 0 0 auto;
+  color: var(--pink);
+}
+
+.cal-embed-fallback .button {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 980px) {
+  .reservation-panel-with-calendar {
+    grid-template-columns: 1fr;
+  }
+
+  .cal-embed-frame {
+    min-height: 720px;
+  }
+}
+
+@media (max-width: 680px) {
+  .reservation-panel-with-calendar {
+    padding: 1rem;
+  }
+
+  .cal-embed-frame {
+    min-height: 820px;
+  }
+
+  .cal-embed-fallback {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
