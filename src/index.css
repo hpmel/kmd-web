@@ -1603,14 +1603,20 @@ video {
 /* Embedded Cal.com scheduler */
 .reservation-panel-with-calendar {
   max-width: 92rem;
-  grid-template-columns: minmax(18rem, 0.55fr) minmax(0, 1.45fr);
+  grid-template-columns: minmax(22rem, 0.65fr) minmax(0, 1.35fr);
   gap: clamp(2rem, 5vw, 5rem);
   padding: clamp(1.5rem, 3vw, 3rem);
 }
 
 .reservation-summary {
+  min-width: 0;
   align-self: start;
   padding: clamp(0.5rem, 2vw, 1.5rem) 0;
+}
+
+.reservation-panel-with-calendar .reservation-summary h2 {
+  font-size: clamp(2.6rem, 3.8vw, 3.8rem);
+  overflow-wrap: break-word;
 }
 
 .cal-embed-wrap {
