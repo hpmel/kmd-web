@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowDown, ArrowUpRight, Check, Sparkles } from 'lucide-react';
 import { Navbar } from './components/Navbar';
+import { BookingPage } from './components/BookingPage';
 import kmdLogo from './assets/Web-kmd-logo-noBG.png';
 import { type Language, translations } from './utils/translations';
 
@@ -40,6 +41,7 @@ function App() {
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const reduceMotion = useReducedMotion();
   const t = translations[lang];
+  const isBookingPage = window.location.pathname.replace(/\\\/+$/, '') === '/diagnostic';
 
   useEffect(() => {
     const video = heroVideoRef.current;
@@ -82,6 +84,10 @@ function App() {
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
     };
   }, [reduceMotion]);
+
+  if (isBookingPage) {
+    return <BookingPage lang={lang} setLang={setLang} />;
+  }
 
   return (
     <div className="site-shell">
@@ -252,7 +258,7 @@ function App() {
             <h2 id="contact-title">{t.contact.title}</h2>
             <p>{t.contact.description}</p>
             <div className="contact-actions">
-              <a className="button button-primary" href="https://kmdweb.ca/contact/">
+              <a className="button button-primary" href="/diagnostic">
                 {t.contact.primaryCta}<ArrowUpRight size={18} aria-hidden="true" />
               </a>
               <a className="button button-secondary" href="https://kmdweb.ca/">
