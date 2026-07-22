@@ -6,11 +6,12 @@ import { type Language, translations } from '../utils/translations';
 interface NavbarProps {
   lang: Language;
   setLang: (lang: Language) => void;
+  isSubpage?: boolean;
 }
 
 const sectionLinks = ['services', 'projects', 'about', 'contact'] as const;
 
-export function Navbar({ lang, setLang }: NavbarProps) {
+export function Navbar({ lang, setLang, isSubpage = false }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
   const t = translations[lang];
@@ -34,16 +35,17 @@ export function Navbar({ lang, setLang }: NavbarProps) {
   }, [isMenuOpen, lang]);
 
   const closeMenu = () => setIsMenuOpen(false);
+  const sectionHref = (section: string) => (isSubpage ? '/#' : '#') + section;
 
   return (
     <header className="site-header">
-      <a className="brand-link" href="#top" aria-label="KMD Web — Accueil" onClick={closeMenu}>
+      <a className="brand-link" href={sectionHref('top')} aria-label="KMD Web — Accueil" onClick={closeMenu}>
         <img src={kmdLogo} alt="" className="brand-logo" />
       </a>
 
       <nav className="desktop-nav" aria-label="Navigation principale">
         {sectionLinks.map((link) => (
-          <a key={link} href={`#${link}`}>{t.nav[link]}</a>
+          <a key={link} href={sectionHref(link)}>{t.nav[link]}</a>
         ))}
       </nav>
 
