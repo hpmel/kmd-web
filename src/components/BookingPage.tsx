@@ -6,8 +6,9 @@ import kmdLogo from '../assets/Web-kmd-logo-noBG.png';
 import type { Language } from '../utils/translations';
 
 const bookingUrl = import.meta.env.VITE_BOOKING_URL?.trim();
-const emailAddress = 'kmd@kmdweb.ca';
-const emailRequestUrl = 'mailto:' + emailAddress + '?subject=' + encodeURIComponent('Consultation gratuite KMD Web') + '&body=' + encodeURIComponent(
+const displayEmailAddress = 'kmd@kmdweb.ca';
+const deliveryEmailAddress = 'desrochersmelanie@gmail.com';
+const emailRequestUrl = 'mailto:' + deliveryEmailAddress + '?subject=' + encodeURIComponent('Consultation gratuite KMD Web') + '&body=' + encodeURIComponent(
   'Bonjour Mélanie,\n\nJe souhaite réserver une consultation gratuite.\n\nMon entreprise :\nMon principal défi numérique :\nMes disponibilités :\n\nMerci!',
 );
 
@@ -191,7 +192,7 @@ export function BookingPage({ lang, setLang }: { lang: Language; setLang: (lang:
 
           <BookingReveal className="booking-contact" delay={0.1}>
             <div><Mail size={20} aria-hidden="true" /><span>{t.contact}</span></div>
-            <a href={'mailto:' + emailAddress}>{t.email} — {emailAddress}</a>
+            <a href={'mailto:' + deliveryEmailAddress}>{t.email} — {displayEmailAddress}</a>
             <small>{t.privacy}</small>
           </BookingReveal>
         </section>
