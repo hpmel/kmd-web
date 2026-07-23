@@ -5,9 +5,12 @@ interface SquashHamburgerProps {
   isOpen: boolean;
   onClick?: () => void;
   className?: string;
+  ariaLabel?: string;
+  ariaExpanded?: boolean;
+  ariaControls?: string;
 }
 
-export const SquashHamburger: React.FC<SquashHamburgerProps> = ({ isOpen, onClick, className = "" }) => {
+export const SquashHamburger: React.FC<SquashHamburgerProps> = ({ isOpen, onClick, className = "", ariaLabel = 'Toggle menu', ariaExpanded, ariaControls }) => {
   const transition = { type: "spring" as const, stiffness: 300, damping: 20 };
 
   return (
@@ -15,7 +18,9 @@ export const SquashHamburger: React.FC<SquashHamburgerProps> = ({ isOpen, onClic
       onClick={onClick}
       className={`relative flex flex-col justify-between focus:outline-none select-none cursor-pointer ${className} 
         w-[18px] h-[12px] sm:w-[24px] sm:h-[16px]`}
-      aria-label="Toggle menu"
+      aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
+      aria-controls={ariaControls}
     >
       {/* Top Bar */}
       <motion.span
