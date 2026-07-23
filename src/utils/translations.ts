@@ -132,7 +132,7 @@ export const translations: Record<Language, SiteCopy> = {
       title: 'Et si la technologie travaillait enfin pour vous?',
       description: "Une première conversation suffit pour identifier le meilleur levier : un meilleur site, une application ou une automatisation ciblée.",
       primaryCta: 'Réserver un diagnostic',
-      secondaryCta: 'Voir le site actuel',
+      secondaryCta: 'Formation IA gratuite — 30 min',
     },
     footer: {
       tagline: 'Créations numériques avec une touche d’intelligence.',
@@ -211,7 +211,7 @@ export const translations: Record<Language, SiteCopy> = {
       title: 'What if technology finally worked for you?',
       description: 'One conversation is enough to identify the best lever: a better website, an application or a focused automation.',
       primaryCta: 'Book a discovery call',
-      secondaryCta: 'View the current website',
+      secondaryCta: 'Free 30-minute AI training',
     },
     footer: {
       tagline: 'Digital creations with a touch of intelligence.',
