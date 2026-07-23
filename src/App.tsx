@@ -224,30 +224,6 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" className="content-section projects-section" aria-labelledby="projects-title">
-          <Reveal className="section-heading split-heading">
-            <div>
-              <SectionLabel>{t.projects.label}</SectionLabel>
-              <h2 id="projects-title">{t.projects.title}</h2>
-            </div>
-            <p>{t.projects.intro}</p>
-          </Reveal>
-
-          <div className="projects-list">
-            {t.projects.items.map((project, index) => (
-              <Reveal key={project.title} className="project-card" delay={index * 0.06}>
-                <span className="project-index">0{index + 1}</span>
-                <div>
-                  <p className="card-eyebrow">{project.type}</p>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-                <ArrowUpRight size={24} aria-hidden="true" />
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
         <section className="content-section process-section" aria-labelledby="process-title">
           <Reveal className="section-heading">
             <SectionLabel>{t.process.label}</SectionLabel>
