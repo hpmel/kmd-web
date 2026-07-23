@@ -50,9 +50,10 @@ function App() {
     offset: ['start end', 'end start'],
   });
   const smoothManifestoProgress = useSpring(manifestoProgress, { stiffness: 55, damping: 24, mass: 0.55 });
-  const manifestoY = useTransform(smoothManifestoProgress, [0, 1], [70, -70]);
-  const manifestoRotateX = useTransform(smoothManifestoProgress, [0, 0.5, 1], [10, 0, -7]);
-  const manifestoOpacity = useTransform(smoothManifestoProgress, [0, 0.2, 0.82, 1], [0.25, 1, 1, 0.42]);
+  const manifestoY = useTransform(smoothManifestoProgress, [0, 0.22, 0.72, 1], [430, 250, -230, -470]);
+  const manifestoRotateX = useTransform(smoothManifestoProgress, [0, 0.45, 1], [62, 56, 46]);
+  const manifestoScale = useTransform(smoothManifestoProgress, [0, 0.24, 0.75, 1], [1.2, 1, 0.56, 0.34]);
+  const manifestoOpacity = useTransform(smoothManifestoProgress, [0, 0.12, 0.82, 1], [0, 1, 1, 0]);
 
   useEffect(() => {
     const timeout = window.setTimeout(() => setEntranceComplete(true), reduceMotion ? 0 : 420);
@@ -179,7 +180,7 @@ function App() {
           <div className="wave-top-fade" aria-hidden="true" />
           <motion.div
             className="manifesto-content"
-            style={reduceMotion ? undefined : { y: manifestoY, rotateX: manifestoRotateX, opacity: manifestoOpacity }}
+            style={reduceMotion ? undefined : { y: manifestoY, rotateX: manifestoRotateX, scale: manifestoScale, opacity: manifestoOpacity }}
           >
             <SectionLabel>{t.manifesto.label}</SectionLabel>
             <h2>{t.manifesto.title}</h2>
