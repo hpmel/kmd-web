@@ -2056,6 +2056,10 @@ video {
 
 /* Desktop hero conversion block — positioned in the open space at right */
 @media (min-width: 981px) {
+  .hero-copy h1 {
+    transform: translate(-1.25rem, clamp(12rem, 25vh, 16rem));
+  }
+
   .hero-description,
   .hero-actions {
     width: min(32vw, 34rem);
