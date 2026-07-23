@@ -2054,11 +2054,13 @@ video {
 }
 
 
-/* Desktop hero conversion block — shifted right per visual review */
+/* Desktop hero conversion block — positioned in the open space at right */
 @media (min-width: 981px) {
   .hero-description,
   .hero-actions {
-    margin-left: clamp(5rem, 24vw, 32rem);
-    max-width: 38rem;
+    width: min(32vw, 34rem);
+    max-width: none;
+    margin-left: 0;
+    transform: translate(clamp(39rem, 61vw, 67rem), -8rem);
   }
 }
