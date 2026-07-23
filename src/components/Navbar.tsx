@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import kmdLogo from '../assets/Web-kmd-logo-noBG.png';
+import { ScrambleIn } from './ScrambleIn';
+import { ScrambleText } from './ScrambleText';
+import { SquashHamburger } from './SquashHamburger';
 import { type Language, translations } from '../utils/translations';
 
 interface NavbarProps {
@@ -10,15 +13,41 @@ interface NavbarProps {
 }
 
 const sectionLinks = ['services', 'projects', 'about', 'contact'] as const;
+const bubbleSpecs = [
+  { left: '19%', size: 6, duration: 3.4, delay: 0.2 },
+  { left: '32%', size: 9, duration: 4.1, delay: 1.1 },
+  { left: '47%', size: 5, duration: 3.1, delay: 0.6 },
+  { left: '61%', size: 8, duration: 4.5, delay: 1.7 },
+  { left: '74%', size: 6, duration: 3.7, delay: 0.9 },
+];
+
+function BubbleField() {
+  return (
+    <span className="nav-bubbles" aria-hidden="true">
+      {bubbleSpecs.map((bubble) => (
+        <span
+          key={bubble.left}
+          style={{
+            left: bubble.left,
+            width: bubble.size,
+            height: bubble.size,
+            animationDuration: bubble.duration + 's',
+            animationDelay: bubble.delay + 's',
+          }}
+        />
+      ))}
+    </span>
+  );
+}
 
 export function Navbar({ lang, setLang, isSubpage = false }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<(typeof sectionLinks)[number] | null>(null);
   const reduceMotion = useReducedMotion();
   const t = translations[lang];
 
   useEffect(() => {
     document.documentElement.lang = lang;
-
     if (!isMenuOpen) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -26,12 +55,7 @@ export function Navbar({ lang, setLang, isSubpage = false }: NavbarProps) {
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen, lang]);
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -43,59 +67,78 @@ export function Navbar({ lang, setLang, isSubpage = false }: NavbarProps) {
         <img src={kmdLogo} alt="" className="brand-logo" />
       </a>
 
-      <nav className="desktop-nav" aria-label="Navigation principale">
-        {sectionLinks.map((link) => (
-          <a key={link} href={sectionHref(link)}>{t.nav[link]}</a>
-        ))}
-      </nav>
-
       <div className="header-actions">
         <button
-          className="language-button"
+          className="language-button nav-orb"
           type="button"
           onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
           aria-label={t.menu.language}
         >
-          {lang === 'fr' ? 'EN' : 'FR'}
+          <span>{lang === 'fr' ? 'EN' : 'FR'}</span>
+          <BubbleField />
         </button>
 
-        <button
-          className="menu-button"
-          type="button"
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-navigation"
-          aria-label={isMenuOpen ? t.menu.close : t.menu.open}
-          onClick={() => setIsMenuOpen((open) => !open)}
-        >
-          <span aria-hidden="true" className={isMenuOpen ? 'menu-icon is-open' : 'menu-icon'}>
-            <span />
-            <span />
-          </span>
-        </button>
+        <div className={isMenuOpen ? 'menu-capsule is-open' : 'menu-capsule'}>
+          <div className="menu-toggle-shell">
+            <SquashHamburger
+              isOpen={isMenuOpen}
+              onClick={() => setIsMenuOpen((open) => !open)}
+              ariaLabel={isMenuOpen ? t.menu.close : t.menu.open}
+              ariaExpanded={isMenuOpen}
+              ariaControls="site-navigation"
+            />
+          </div>
+
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.nav
+                id="site-navigation"
+                className="desktop-capsule-nav"
+                aria-label="Navigation principale"
+                initial={reduceMotion ? false : { opacity: 0, x: 18 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 12 }}
+                transition={{ duration: reduceMotion ? 0 : 0.24 }}
+              >
+                {sectionLinks.map((link) => (
+                  <a
+                    key={link}
+                    href={sectionHref(link)}
+                    onClick={closeMenu}
+                    onMouseEnter={() => setHoveredLink(link)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    <ScrambleText text={t.nav[link]} isHovered={hoveredLink === link} />
+                  </a>
+                ))}
+              </motion.nav>
+            )}
+          </AnimatePresence>
+          {!isMenuOpen && <BubbleField />}
+        </div>
       </div>
 
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
-            id="mobile-navigation"
             className="mobile-nav"
             aria-label="Navigation mobile"
-            initial={reduceMotion ? false : { opacity: 0, y: -16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: -18 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -16 }}
-            transition={{ duration: 0.25 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -18 }}
+            transition={{ duration: reduceMotion ? 0 : 0.28 }}
           >
             {sectionLinks.map((link, index) => (
               <motion.a
                 key={link}
-                href={`#${link}`}
+                href={sectionHref(link)}
                 onClick={closeMenu}
-                initial={reduceMotion ? false : { opacity: 0, x: 20 }}
+                initial={reduceMotion ? false : { opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: reduceMotion ? 0 : index * 0.05 }}
+                transition={{ delay: reduceMotion ? 0 : index * 0.07 }}
               >
                 <span>0{index + 1}</span>
-                {t.nav[link]}
+                <ScrambleIn text={t.nav[link]} delay={index * 90} triggered={isMenuOpen} />
               </motion.a>
             ))}
           </motion.nav>
