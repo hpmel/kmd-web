@@ -12,7 +12,7 @@ interface NavbarProps {
   isSubpage?: boolean;
 }
 
-const sectionLinks = ['services', 'projects', 'about', 'contact'] as const;
+const sectionLinks = ['services', 'about', 'contact'] as const;
 const bubbleSpecs = [
   { left: '19%', size: 6, duration: 3.4, delay: 0.2 },
   { left: '32%', size: 9, duration: 4.1, delay: 1.1 },
