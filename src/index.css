@@ -638,16 +638,30 @@ video {
 .metrics-section {
   position: relative;
   isolation: isolate;
+  display: flex;
+  min-height: max(45rem, 100svh);
+  align-items: flex-end;
   overflow: hidden;
-  padding: clamp(7rem, 15vw, 13rem) var(--page-pad);
+  padding: clamp(5rem, 9vw, 8rem) var(--page-pad);
+}
+
+.metrics-video {
+  opacity: 0.98;
+  object-position: center;
 }
 
 .metrics-overlay {
-  background: linear-gradient(90deg, rgba(5, 3, 6, 0.88), rgba(5, 3, 6, 0.42));
+  background: linear-gradient(
+    180deg,
+    rgba(5, 3, 6, 0.08) 0%,
+    rgba(5, 3, 6, 0.12) 48%,
+    rgba(5, 3, 6, 0.82) 100%
+  );
 }
 
 .metrics-grid {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
