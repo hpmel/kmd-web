@@ -2052,3 +2052,13 @@ video {
     font-size: 0.79rem;
   }
 }
+
+
+/* Desktop hero conversion block — shifted right per visual review */
+@media (min-width: 981px) {
+  .hero-description,
+  .hero-actions {
+    margin-left: clamp(5rem, 24vw, 32rem);
+    max-width: 38rem;
+  }
+}
