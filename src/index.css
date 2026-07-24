@@ -353,7 +353,7 @@ video {
   gap: 0.6rem;
   margin: 0 0 1.5rem;
   color: var(--pink-soft);
-  font-size: clamp(0.65rem, 1.2vw, 0.78rem);
+  font-size: clamp(0.82rem, 1.15vw, 0.98rem);
 }
 
 .hero-copy h1,
@@ -593,7 +593,7 @@ video {
 .card-eyebrow {
   margin: 0 0 3.5rem;
   color: var(--pink);
-  font-size: 0.66rem;
+  font-size: 0.78rem;
 }
 
 .service-card h3,
