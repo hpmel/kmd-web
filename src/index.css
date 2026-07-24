@@ -2100,3 +2100,52 @@ video {
     transform: translate(clamp(39rem, 61vw, 67rem), -8rem);
   }
 }
+
+/* Proportions pass — bolder KMD mark, calmer hero type, readable body copy */
+.site-shell p:not(.hero-eyebrow):not(.section-label):not(.card-eyebrow):not(.booking-offer):not(.booking-back):not(.interaction-hint) {
+  font-size: clamp(1.06rem, 1.3vw, 1.3rem);
+}
+
+@media (min-width: 981px) {
+  .site-header {
+    height: 13rem;
+    padding-top: 0.35rem;
+  }
+
+  .brand-link {
+    width: 24.5rem;
+    height: 12.5rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 62rem;
+    font-size: clamp(2.5rem, 4.9vw, 5.1rem);
+    transform: translate(calc(-1 * var(--page-pad)), clamp(12rem, 25vh, 16rem));
+  }
+
+  .hero-title-line-shifted {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .brand-link {
+    width: clamp(12rem, 34vw, 17.8rem);
+    height: clamp(6.75rem, 19vw, 10rem);
+  }
+
+  .site-header {
+    height: clamp(7.2rem, 16vw, 10.5rem);
+  }
+}
+
+@media (max-width: 680px) {
+  .brand-link {
+    width: 12.5rem;
+    height: 7rem;
+  }
+
+  .site-header {
+    height: 7.5rem;
+  }
+}
