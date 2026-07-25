@@ -5,16 +5,18 @@ export type SiteCopy = {
   menu: { open: string; close: string; language: string };
   hero: {
     eyebrow: string;
-    titleStart: string;
+    titleLine1: string;
+    titleLine2: string;
     titleAccent: string;
-    titleEnd: string;
+    titleLine3Suffix: string;
+    titleLine4: string;
     description: string;
     primaryCta: string;
     secondaryCta: string;
     proof: string[];
     interactionHint: string;
   };
-  manifesto: { label: string; title: string; description: string };
+  manifesto: { label: string; title: string; paragraphs: string[] };
   services: {
     label: string;
     title: string;
@@ -54,9 +56,11 @@ export const translations: Record<Language, SiteCopy> = {
     },
     hero: {
       eyebrow: 'Sites Web · Applications · Automatisation IA',
-      titleStart: 'Des outils numériques qui',
+      titleLine1: 'Des outils',
+      titleLine2: 'numériques qui',
       titleAccent: 'travaillent',
-      titleEnd: 'pour votre entreprise.',
+      titleLine3Suffix: 'pour',
+      titleLine4: 'votre entreprise.',
       description: "KMD Web conçoit des sites, des applications et des automatisations qui réduisent le travail manuel et transforment davantage de visiteurs en clients.",
       primaryCta: 'Parler de mon projet',
       secondaryCta: 'Découvrir les services',
@@ -66,7 +70,11 @@ export const translations: Record<Language, SiteCopy> = {
     manifesto: {
       label: 'La différence KMD',
       title: 'La technologie devrait vous faire gagner du temps, pas vous en faire perdre.',
-      description: "Vous n’avez pas besoin d’un autre outil compliqué. Vous avez besoin d’un système clair qui attire les bons clients, automatise les tâches répétitives et reste simple à utiliser.",
+      paragraphs: [
+        "Vous n’avez pas besoin d’un autre outil compliqué. Vous avez besoin d’un système clair qui attire les bons clients, automatise les tâches répétitives et reste simple à utiliser.",
+        "Un site web bien conçu et bien référencé qui attire les bons clients de façon continue, même pendant que vous travaillez sur autre chose.",
+        "Grâce à notre système intelligent; il peut répondre aux questions, trier les demandes, qualifier les prospects et les guider — afin de convertir davantage de visiteurs en clients, avec moins de travail manuel et perte de temps.",
+      ],
     },
     services: {
       label: 'Ce que je construis',
@@ -81,7 +89,7 @@ export const translations: Record<Language, SiteCopy> = {
         },
         {
           eyebrow: '02 — Produits numériques',
-          title: 'Applications et SaaS',
+          title: 'Applications et SaaS personnalisés',
           description: "Du prototype à la plateforme complète, je développe l’interface, le serveur, les données et les intégrations.",
           outcomes: ['Portails et CRM', 'Applications Web', 'API et intégrations'],
         },
@@ -148,9 +156,11 @@ export const translations: Record<Language, SiteCopy> = {
     },
     hero: {
       eyebrow: 'Websites · Applications · AI Automation',
-      titleStart: 'Digital tools that',
+      titleLine1: 'Digital tools',
+      titleLine2: 'that',
       titleAccent: 'work',
-      titleEnd: 'for your business.',
+      titleLine3Suffix: 'for',
+      titleLine4: 'your business.',
       description: 'KMD Web designs websites, applications and automations that reduce manual work and turn more visitors into customers.',
       primaryCta: 'Discuss my project',
       secondaryCta: 'Explore services',
@@ -160,7 +170,11 @@ export const translations: Record<Language, SiteCopy> = {
     manifesto: {
       label: 'The KMD difference',
       title: 'Technology should save you time, not consume it.',
-      description: 'You do not need another complicated tool. You need a clear system that attracts the right customers, automates repetitive work and stays easy to use.',
+      paragraphs: [
+        'You do not need another complicated tool. You need a clear system that attracts the right customers, automates repetitive work and stays easy to use.',
+        'A well-designed, search-optimized website that continuously attracts the right clients, even while you focus on other work.',
+        'Thanks to our intelligent system, it can answer questions, sort inquiries, qualify prospects, and guide them — converting more visitors into clients with less manual work and wasted time.',
+      ],
     },
     services: {
       label: 'What I build',
@@ -168,7 +182,7 @@ export const translations: Record<Language, SiteCopy> = {
       intro: 'Every engagement starts with your business outcome. Technology comes second — only where it creates real value.',
       items: [
         { eyebrow: '01 — Digital presence', title: 'Websites that convert', description: 'Fast, distinctive and manageable websites designed to communicate your value and generate qualified inquiries.', outcomes: ['Business or commerce website', 'Tailored UX/UI design', 'SEO and performance'] },
-        { eyebrow: '02 — Digital products', title: 'Applications and SaaS', description: 'From prototype to full platform, I develop the interface, server, data and integrations.', outcomes: ['Portals and CRM', 'Web applications', 'APIs and integrations'] },
+        { eyebrow: '02 — Digital products', title: 'Custom Applications and SaaS', description: 'From prototype to full platform, I develop the interface, server, data and integrations.', outcomes: ['Portals and CRM', 'Web applications', 'APIs and integrations'] },
         { eyebrow: '03 — Time recovered', title: 'Automation and AI agents', description: 'Assistants and automated workflows that answer, organize, follow up and prepare work while you move forward.', outcomes: ['Conversational agents', 'Operational automation', 'Connected business tools'] },
       ],
     },

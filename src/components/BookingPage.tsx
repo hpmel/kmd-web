@@ -2,6 +2,8 @@ import { useEffect, type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, ArrowUpRight, CalendarDays, Check, Clock3, Gift, Mail, Sparkles, Video } from 'lucide-react';
 import { Navbar } from './Navbar';
+import { ScrambleHeading } from './ScrambleHeading';
+import { CustomCursor } from './CustomCursor';
 import kmdLogo from '../assets/Web-kmd-logo-noBG.png';
 import type { Language } from '../utils/translations';
 
@@ -20,7 +22,7 @@ const copy = {
     intro: 'Un échange simple et concret pour repérer le meilleur levier : améliorer votre site, créer un outil sur mesure ou automatiser une tâche qui vous ralentit.',
     book: 'Choisir mon moment',
     emailBook: 'Demander mes disponibilités',
-    reassurance: 'Sans engagement · En visioconférence · En français ou en anglais',
+    reassuranceLines: ['Sans engagement', 'En visioconférence', 'En français'],
     agendaLabel: 'Votre diagnostic de 30 minutes',
     agendaTitle: 'On va droit à ce qui peut faire une différence.',
     agenda: [
@@ -35,7 +37,10 @@ const copy = {
     bonusNote: 'Séance distincte de 30 minutes · Disponible pour une durée limitée',
     panelLabel: 'Réserver maintenant',
     panelTitle: 'Votre première conversation commence ici.',
-    panelText: 'Choisissez une plage de 30 minutes. Vous recevrez ensuite les détails de la visioconférence par courriel.',
+    panelTextLines: [
+      'Choisissez une plage de 30 minutes.',
+      'Vous recevrez ensuite les détails de la visioconférence par courriel.',
+    ],
     panelConfigured: 'Réservez directement ci-dessous ou ouvrez le calendrier dans un nouvel onglet.',
     panelFallback: 'Le calendrier automatique sera activé dès que votre agenda sera connecté. Pour l’instant, envoyez votre demande et je vous proposerai des disponibilités.',
     included: ['Consultation individuelle', 'Recommandations adaptées', 'Aucune préparation requise'],
@@ -53,7 +58,7 @@ const copy = {
     intro: 'A straightforward conversation to identify the best lever: improve your website, build a tailored tool or automate work that slows you down.',
     book: 'Choose a time',
     emailBook: 'Request available times',
-    reassurance: 'No commitment · Video call · French or English',
+    reassuranceLines: ['No commitment', 'Video call', 'In French'],
     agendaLabel: 'Your 30-minute discovery call',
     agendaTitle: 'We focus on what can make a real difference.',
     agenda: [
@@ -68,7 +73,10 @@ const copy = {
     bonusNote: 'Separate 30-minute session · Available for a limited time',
     panelLabel: 'Book now',
     panelTitle: 'Your first conversation starts here.',
-    panelText: 'Choose a 30-minute time slot. You will receive the video-call details by email.',
+    panelTextLines: [
+      'Choose a 30-minute time slot.',
+      'You will receive the video-call details by email.',
+    ],
     panelConfigured: 'Book directly below or open the calendar in a new tab.',
     panelFallback: 'Automatic scheduling will be enabled once your calendar is connected. For now, send your request and I will suggest available times.',
     included: ['One-on-one consultation', 'Tailored recommendations', 'No preparation required'],
@@ -110,13 +118,15 @@ export function BookingPage({ lang, setLang }: { lang: Language; setLang: (lang:
 
   return (
     <div className="site-shell booking-shell">
+      <CustomCursor />
       <a className="skip-link" href="#booking-main">Aller au contenu principal</a>
       <Navbar lang={lang} setLang={setLang} isSubpage />
 
       <main id="booking-main">
         <section id="top" className="booking-hero" aria-labelledby="booking-title">
           <div className="booking-orbit" aria-hidden="true">
-            <motion.span animate={reduceMotion ? undefined : { rotate: 360 }} transition={{ duration: 28, repeat: Infinity, ease: 'linear' }} />
+            <motion.span className="orbit-outer" animate={reduceMotion ? undefined : { rotate: 360 }} transition={{ duration: 28, repeat: Infinity, ease: 'linear' }} />
+            <motion.span className="orbit-inner" animate={reduceMotion ? undefined : { rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }} />
           </div>
           <div className="dot-grid" aria-hidden="true" />
 
@@ -133,7 +143,14 @@ export function BookingPage({ lang, setLang }: { lang: Language; setLang: (lang:
             </motion.p>
             <motion.div className="booking-hero-actions" initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : 0.6, delay: 0.28 }}>
               <a className="button button-primary" href="#reserve">{bookingUrl ? t.book : t.emailBook}<ArrowUpRight size={18} aria-hidden="true" /></a>
-              <p><Video size={16} aria-hidden="true" />{t.reassurance}</p>
+              <div className="booking-reassurance">
+                <Video size={16} aria-hidden="true" />
+                <span className="reassurance-list">
+                  {t.reassuranceLines.map((line, idx) => (
+                    <span key={idx}>{line}</span>
+                  ))}
+                </span>
+              </div>
             </motion.div>
           </div>
 
@@ -143,7 +160,7 @@ export function BookingPage({ lang, setLang }: { lang: Language; setLang: (lang:
         <section className="booking-agenda" aria-labelledby="agenda-title">
           <BookingReveal className="booking-section-heading">
             <p className="section-label"><span aria-hidden="true" />{t.agendaLabel}</p>
-            <h2 id="agenda-title">{t.agendaTitle}</h2>
+            <ScrambleHeading id="agenda-title" text={t.agendaTitle} />
           </BookingReveal>
           <ol className="booking-timeline">
             {t.agenda.map(([time, title, description], index) => (
@@ -159,10 +176,14 @@ export function BookingPage({ lang, setLang }: { lang: Language; setLang: (lang:
 
         <section className="booking-bonus" aria-labelledby="bonus-title">
           <BookingReveal className="bonus-card">
-            <div className="bonus-mark" aria-hidden="true"><Gift size={28} /></div>
+            <div className="bonus-mark" aria-hidden="true">
+              <Gift size={32} />
+              <Sparkles size={14} className="bonus-sparkle bonus-sparkle-1" />
+              <Sparkles size={12} className="bonus-sparkle bonus-sparkle-2" />
+            </div>
             <div className="bonus-copy">
               <p className="section-label"><span aria-hidden="true" />{t.bonusLabel}</p>
-              <h2 id="bonus-title">{t.bonusTitle}</h2>
+              <ScrambleHeading id="bonus-title" text={t.bonusTitle} />
               <p>{t.bonusIntro}</p>
               <ul>{t.bonusItems.map((item) => <li key={item}><Check size={17} aria-hidden="true" />{item}</li>)}</ul>
               <p className="bonus-note">{t.bonusNote}</p>
@@ -174,8 +195,12 @@ export function BookingPage({ lang, setLang }: { lang: Language; setLang: (lang:
           <BookingReveal className="reservation-panel reservation-panel-with-calendar">
             <div className="reservation-summary">
               <p className="section-label"><span aria-hidden="true" />{t.panelLabel}</p>
-              <h2 id="reserve-title">{t.panelTitle}</h2>
-              <p>{t.panelText}</p>
+              <ScrambleHeading id="reserve-title" text={t.panelTitle} />
+              <div className="reservation-description">
+                {t.panelTextLines.map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))}
+              </div>
               <ul>{t.included.map((item) => <li key={item}><Check size={16} aria-hidden="true" />{item}</li>)}</ul>
             </div>
             <div className="cal-embed-wrap">

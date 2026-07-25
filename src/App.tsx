@@ -3,6 +3,8 @@ import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'fr
 import { ArrowDown, ArrowUpRight, Check, Sparkles } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { ScrambleIn } from './components/ScrambleIn';
+import { ScrambleHeading } from './components/ScrambleHeading';
+import { CustomCursor } from './components/CustomCursor';
 import { BookingPage } from './components/BookingPage';
 import kmdLogo from './assets/Web-kmd-logo-noBG.png';
 import { type Language, translations } from './utils/translations';
@@ -90,8 +92,9 @@ function App() {
     };
 
     const handlePointerMove = (event: PointerEvent) => {
-      if (!Number.isFinite(video.duration) || video.duration <= 0) return;
-      requestedTime = (event.clientX / window.innerWidth) * video.duration;
+      const dur = video.duration;
+      if (!Number.isFinite(dur) || dur <= 0) return;
+      requestedTime = (event.clientX / window.innerWidth) * dur;
       if (!animationFrame) animationFrame = window.requestAnimationFrame(updateVideo);
     };
 
@@ -108,6 +111,7 @@ function App() {
 
   return (
     <div className="site-shell">
+      <CustomCursor />
       <a className="skip-link" href="#main-content">Aller au contenu principal</a>
       <Navbar lang={lang} setLang={setLang} />
 
@@ -120,7 +124,7 @@ function App() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-hidden="true"
           />
           <div className="hero-vignette" aria-hidden="true" />
@@ -139,11 +143,17 @@ function App() {
               <p className="hero-eyebrow"><Sparkles size={15} aria-hidden="true" /> {t.hero.eyebrow}</p>
               <h1 id="hero-title">
                 <span className="hero-title-line">
-                  <ScrambleIn text={t.hero.titleStart} delay={120} triggered={entranceComplete} />
+                  <ScrambleIn text={t.hero.titleLine1} delay={120} triggered={entranceComplete} />
                 </span>
-                <span className="hero-title-line hero-title-line-shifted">
-                  <span className="hero-title-accent"><ScrambleIn text={t.hero.titleAccent} delay={380} triggered={entranceComplete} /></span>{' '}
-                  <ScrambleIn text={t.hero.titleEnd} delay={560} triggered={entranceComplete} />
+                <span className="hero-title-line">
+                  <ScrambleIn text={t.hero.titleLine2} delay={280} triggered={entranceComplete} />
+                </span>
+                <span className="hero-title-line">
+                  <span className="hero-title-accent"><ScrambleIn text={t.hero.titleAccent} delay={440} triggered={entranceComplete} /></span>{' '}
+                  <ScrambleIn text={t.hero.titleLine3Suffix} delay={580} triggered={entranceComplete} />
+                </span>
+                <span className="hero-title-line">
+                  <ScrambleIn text={t.hero.titleLine4} delay={720} triggered={entranceComplete} />
                 </span>
               </h1>
               <p className="hero-description">{t.hero.description}</p>
@@ -183,15 +193,17 @@ function App() {
             style={reduceMotion ? undefined : { y: manifestoY, rotateX: manifestoRotateX, scale: manifestoScale, opacity: manifestoOpacity }}
           >
             <SectionLabel>{t.manifesto.label}</SectionLabel>
-            <h2>{t.manifesto.title}</h2>
-            <p>{t.manifesto.description}</p>
+            <ScrambleHeading text={t.manifesto.title} />
+            {t.manifesto.paragraphs.map((paragraph, idx) => (
+              <p key={idx} className="manifesto-paragraph">{paragraph}</p>
+            ))}
           </motion.div>
         </section>
 
         <section id="services" className="content-section services-section" aria-labelledby="services-title">
           <Reveal className="section-heading">
             <SectionLabel>{t.services.label}</SectionLabel>
-            <h2 id="services-title">{t.services.title}</h2>
+            <ScrambleHeading id="services-title" text={t.services.title} />
             <p>{t.services.intro}</p>
           </Reveal>
 
@@ -227,7 +239,7 @@ function App() {
         <section className="content-section process-section" aria-labelledby="process-title">
           <Reveal className="section-heading">
             <SectionLabel>{t.process.label}</SectionLabel>
-            <h2 id="process-title">{t.process.title}</h2>
+            <ScrambleHeading id="process-title" text={t.process.title} />
           </Reveal>
 
           <ol className="process-list">
@@ -249,7 +261,7 @@ function App() {
           </div>
           <Reveal className="about-copy">
             <SectionLabel>{t.about.label}</SectionLabel>
-            <h2 id="about-title">{t.about.title}</h2>
+            <ScrambleHeading id="about-title" text={t.about.title} />
             {t.about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             <p className="signature">{t.about.signature}</p>
           </Reveal>
@@ -258,7 +270,7 @@ function App() {
         <section id="contact" className="contact-section" aria-labelledby="contact-title">
           <Reveal>
             <SectionLabel>{t.contact.label}</SectionLabel>
-            <h2 id="contact-title">{t.contact.title}</h2>
+            <ScrambleHeading id="contact-title" text={t.contact.title} />
             <p>{t.contact.description}</p>
             <div className="contact-actions">
               <a className="button button-primary" href="/diagnostic">

@@ -102,7 +102,7 @@ video {
   pointer-events: none;
 }
 
-.site-header > * {
+.site-header>* {
   pointer-events: auto;
 }
 
@@ -196,6 +196,12 @@ video {
   background: rgba(212, 23, 106, 0.14);
   border-color: rgba(212, 23, 106, 0.65);
   transform: translateY(-2px);
+}
+
+h2 {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  letter-spacing: -0.065em;
 }
 
 .menu-button {
@@ -362,9 +368,9 @@ video {
 .about-copy h2,
 .contact-section h2 {
   margin: 0;
-  font-family: "Syne", sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.055em;
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  letter-spacing: -0.065em;
 }
 
 .hero-copy h1 {
@@ -393,6 +399,7 @@ video {
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .button {
@@ -452,7 +459,7 @@ video {
   color: rgba(255, 255, 255, 0.65);
   border-top: 1px solid var(--line);
   font-family: "Space Mono", monospace;
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   line-height: 1.5;
   text-transform: uppercase;
 }
@@ -505,7 +512,8 @@ video {
   gap: 0.85rem;
   margin: 0 0 1.55rem;
   color: var(--pink-soft);
-  font-size: clamp(0.82rem, 1vw, 0.96rem);
+  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
+  font-weight: 500;
 }
 
 .section-label span {
@@ -516,20 +524,32 @@ video {
 
 .manifesto-content .section-label {
   justify-content: center;
+  font-size: clamp(1.75rem, 2.7vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.manifesto-content .section-label span {
+  width: 3.2rem;
+  height: 2px;
 }
 
 .manifesto-content h2 {
-  font-size: clamp(2.6rem, 6.3vw, 6.2rem);
-  line-height: 1;
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+  line-height: 0.96;
   text-wrap: balance;
 }
 
-.manifesto-content > p:last-child {
+.manifesto-paragraph {
   max-width: 48rem;
-  margin: 2rem auto 0;
+  margin: 1.75rem auto 0;
   color: rgba(255, 255, 255, 0.67);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.75;
+}
+
+.manifesto-paragraph + .manifesto-paragraph {
+  margin-top: 1.25rem;
 }
 
 .content-section {
@@ -550,21 +570,21 @@ video {
 .section-heading h2,
 .about-copy h2,
 .contact-section h2 {
-  font-size: clamp(2.7rem, 5.5vw, 5.7rem);
-  line-height: 0.98;
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+  line-height: 0.96;
   text-wrap: balance;
 }
 
-.section-heading > p:last-child,
-.split-heading > p,
-.about-copy > p,
-.contact-section > div > p {
+.section-heading>p:last-child,
+.split-heading>p,
+.about-copy>p,
+.contact-section>div>p {
   color: var(--muted);
   font-size: clamp(1rem, 1.4vw, 1.14rem);
   line-height: 1.75;
 }
 
-.section-heading > p:last-child {
+.section-heading>p:last-child {
   max-width: 43rem;
   margin: 1.5rem 0 0;
 }
@@ -607,7 +627,7 @@ video {
   line-height: 1.05;
 }
 
-.service-card > div > p:nth-of-type(2) {
+.service-card>div>p:nth-of-type(2) {
   min-height: 6.5rem;
   margin: 1.4rem 0 2.5rem;
   color: var(--muted);
@@ -651,12 +671,10 @@ video {
 }
 
 .metrics-overlay {
-  background: linear-gradient(
-    180deg,
-    rgba(5, 3, 6, 0.08) 0%,
-    rgba(5, 3, 6, 0.12) 48%,
-    rgba(5, 3, 6, 0.82) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(5, 3, 6, 0.08) 0%,
+      rgba(5, 3, 6, 0.12) 48%,
+      rgba(5, 3, 6, 0.82) 100%);
 }
 
 .metrics-grid {
@@ -700,7 +718,7 @@ video {
   align-items: end;
 }
 
-.split-heading > p {
+.split-heading>p {
   margin: 0;
 }
 
@@ -739,7 +757,7 @@ video {
   font-size: clamp(2rem, 4.5vw, 4.7rem);
 }
 
-.project-card div > p:last-child {
+.project-card div>p:last-child {
   max-width: 45rem;
   margin: 1rem 0 0;
   color: var(--muted);
@@ -765,7 +783,7 @@ video {
   border-bottom: 1px solid var(--line);
 }
 
-.process-list li > div {
+.process-list li>div {
   min-height: 20rem;
   padding: 2rem;
 }
@@ -820,7 +838,7 @@ video {
   padding: var(--section-space) var(--page-pad);
 }
 
-.about-copy > p {
+.about-copy>p {
   max-width: 39rem;
   margin: 1.5rem 0 0;
 }
@@ -842,7 +860,7 @@ video {
   text-align: center;
 }
 
-.contact-section > div {
+.contact-section>div {
   max-width: 70rem;
   margin: 0 auto;
 }
@@ -855,7 +873,7 @@ video {
   font-size: clamp(3.2rem, 8vw, 8rem);
 }
 
-.contact-section > div > p {
+.contact-section>div>p {
   max-width: 45rem;
   margin: 2rem auto 0;
 }
@@ -870,11 +888,10 @@ video {
   gap: 2rem;
   align-items: center;
   padding: 2.5rem var(--page-pad);
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.65);
   background: #050306;
   border-top: 1px solid var(--line);
   font-family: "Space Mono", monospace;
-  font-size: 0.65rem;
 }
 
 .site-footer a {
@@ -883,10 +900,12 @@ video {
 
 .site-footer p {
   margin: 0;
+  font-size: 0.82rem;
 }
 
 .site-footer p:last-child {
   justify-self: end;
+  font-size: 0.78rem;
 }
 
 @media (max-width: 980px) {
@@ -926,7 +945,7 @@ video {
     min-height: auto;
   }
 
-  .service-card > div > p:nth-of-type(2) {
+  .service-card>div>p:nth-of-type(2) {
     min-height: auto;
   }
 
@@ -1024,7 +1043,7 @@ video {
     justify-content: flex-start;
   }
 
-  .manifesto-content > p:last-child {
+  .manifesto-content>p:last-child {
     margin-left: 0;
   }
 
@@ -1045,7 +1064,7 @@ video {
     padding: 2rem 0;
   }
 
-  .project-card > svg {
+  .project-card>svg {
     display: none;
   }
 
@@ -1057,7 +1076,7 @@ video {
     grid-template-columns: 1fr;
   }
 
-  .process-list li > div {
+  .process-list li>div {
     min-height: auto;
   }
 
@@ -1155,14 +1174,14 @@ video {
   background: radial-gradient(circle, rgba(212, 23, 106, 0.18), transparent 65%);
 }
 
-.booking-orbit > span {
+.booking-orbit .orbit-outer {
   position: absolute;
   inset: -1px;
   display: block;
   border-radius: 50%;
 }
 
-.booking-orbit > span::before {
+.booking-orbit .orbit-outer::before {
   content: "";
   position: absolute;
   top: 4.8%;
@@ -1172,6 +1191,25 @@ video {
   background: var(--pink);
   border-radius: 50%;
   box-shadow: 0 0 2rem var(--pink);
+}
+
+.booking-orbit .orbit-inner {
+  position: absolute;
+  inset: 16%;
+  display: block;
+  border-radius: 50%;
+}
+
+.booking-orbit .orbit-inner::before {
+  content: "";
+  position: absolute;
+  bottom: 6%;
+  right: 22%;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--pink);
+  border-radius: 50%;
+  box-shadow: 0 0 1.8rem var(--pink);
 }
 
 .booking-hero-copy {
@@ -1213,21 +1251,31 @@ video {
   text-transform: uppercase;
 }
 
+/* Diagnostic Page Titles (H1 and H2s) */
+#booking-title,
+#agenda-title,
+#bonus-title,
+#reserve-title,
 .booking-hero h1,
 .booking-section-heading h2,
 .bonus-copy h2,
+.reservation-summary h2,
 .reservation-panel h2 {
   margin: 0;
-  font-family: "Syne", sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.055em;
+  font-family: "Space Mono", monospace !important;
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.065em !important;
+  line-height: 0.96 !important;
   text-wrap: balance;
+  hyphens: none !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
 }
 
-.booking-hero h1 {
-  max-width: 58rem;
-  font-size: clamp(3.4rem, 7.5vw, 7.7rem);
-  line-height: 0.91;
+.booking-hero h1,
+#booking-title {
+  max-width: 54rem;
 }
 
 .booking-hero h1 span {
@@ -1250,16 +1298,31 @@ video {
   margin-top: 2.1rem;
 }
 
-.booking-hero-actions > p {
+.booking-reassurance {
   display: flex;
-  max-width: 26rem;
-  align-items: center;
-  gap: 0.55rem;
+  align-items: flex-start;
+  gap: 0.65rem;
   margin: 0;
-  color: rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.68);
   font-family: "Space Mono", monospace;
-  font-size: 0.65rem;
-  line-height: 1.55;
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.booking-reassurance svg {
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  color: var(--pink-soft);
+}
+
+.reassurance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.reassurance-list span {
+  display: block;
 }
 
 .booking-time-seal {
@@ -1330,7 +1393,7 @@ video {
   border-bottom: 1px solid var(--line);
 }
 
-.booking-timeline li > div {
+.booking-timeline li>div {
   min-height: 23rem;
   padding: clamp(1.5rem, 3vw, 2.5rem);
 }
@@ -1377,19 +1440,148 @@ video {
 }
 
 .bonus-mark {
+  position: relative;
   display: grid;
   width: 10rem;
   aspect-ratio: 1;
   place-items: center;
   color: var(--pink);
-  border: 1px solid rgba(212, 23, 106, 0.35);
+  border: 1px solid rgba(212, 23, 106, 0.45);
   border-radius: 50%;
   box-shadow:
-    inset 0 0 0 1.5rem rgba(212, 23, 106, 0.035),
-    0 0 4rem rgba(212, 23, 106, 0.1);
+    inset 0 0 0 1.5rem rgba(212, 23, 106, 0.04),
+    0 0 3.5rem rgba(212, 23, 106, 0.2);
+  animation: giftPulse 3.5s ease-in-out infinite alternate;
 }
 
-.bonus-copy > p:not(.section-label, .bonus-note) {
+.bonus-mark::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 23, 106, 0.4);
+  animation: giftRingSpin 22s linear infinite;
+  pointer-events: none;
+}
+
+.bonus-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(212, 23, 106, 0.35);
+  opacity: 0.5;
+  animation: giftGlow 2.5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.bonus-mark svg:not(.bonus-sparkle) {
+  animation: giftBounce 3.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 0 10px rgba(212, 23, 106, 0.65));
+  transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bonus-card:hover .bonus-mark svg:not(.bonus-sparkle),
+.bonus-mark:hover svg:not(.bonus-sparkle) {
+  animation: giftJoyBounce 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate;
+  color: #ff3b88;
+}
+
+.bonus-sparkle {
+  position: absolute;
+  color: var(--pink-soft);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.bonus-sparkle-1 {
+  top: 1.4rem;
+  right: 1.6rem;
+  animation: sparkleTwinkle 2.5s ease-in-out infinite;
+}
+
+.bonus-sparkle-2 {
+  bottom: 1.6rem;
+  left: 1.6rem;
+  animation: sparkleTwinkle 2.5s ease-in-out 1.25s infinite;
+}
+
+@keyframes giftPulse {
+  0% {
+    box-shadow:
+      inset 0 0 0 1.5rem rgba(212, 23, 106, 0.04),
+      0 0 2.5rem rgba(212, 23, 106, 0.15);
+    border-color: rgba(212, 23, 106, 0.35);
+  }
+  100% {
+    box-shadow:
+      inset 0 0 0 1.2rem rgba(212, 23, 106, 0.08),
+      0 0 4.5rem rgba(212, 23, 106, 0.4);
+    border-color: rgba(212, 23, 106, 0.7);
+  }
+}
+
+@keyframes giftRingSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes giftGlow {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes giftBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  12% {
+    transform: translateY(-9px) rotate(-8deg) scale(1.1);
+  }
+  24% {
+    transform: translateY(0) rotate(7deg) scale(1.04);
+  }
+  36% {
+    transform: translateY(-5px) rotate(-4deg) scale(1.06);
+  }
+  48% {
+    transform: translateY(0) rotate(2deg) scale(1);
+  }
+}
+
+@keyframes giftJoyBounce {
+  0% {
+    transform: translateY(0) rotate(-10deg) scale(1.15);
+  }
+  100% {
+    transform: translateY(-12px) rotate(10deg) scale(1.28);
+  }
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35) rotate(45deg);
+    color: #ff529a;
+  }
+}
+
+.bonus-copy>p:not(.section-label, .bonus-note) {
   max-width: 47rem;
   margin: 1.5rem 0 0;
   color: var(--muted);
@@ -1431,7 +1623,7 @@ video {
   color: var(--pink-soft);
   border-top: 1px solid rgba(212, 23, 106, 0.25);
   font-family: "Space Mono", monospace;
-  font-size: 0.65rem;
+  font-size: clamp(0.56rem, 0.85vw, 0.68rem);
   line-height: 1.6;
   text-transform: uppercase;
 }
@@ -1451,11 +1643,20 @@ video {
   border: 1px solid var(--line);
 }
 
-.reservation-panel > div:first-child > p:not(.section-label) {
+.reservation-description {
   max-width: 43rem;
   margin: 1.5rem 0 0;
+}
+
+.reservation-description p {
+  margin: 0 0 0.5rem;
   color: var(--muted);
-  line-height: 1.75;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.6;
+}
+
+.reservation-description p:last-child {
+  margin-bottom: 0;
 }
 
 .reservation-action {
@@ -1468,11 +1669,11 @@ video {
   border-left: 1px solid var(--line);
 }
 
-.reservation-action > svg {
+.reservation-action>svg {
   color: var(--pink);
 }
 
-.reservation-action > p {
+.reservation-action>p {
   margin: 0;
   color: rgba(255, 255, 255, 0.46);
   font-size: 0.76rem;
@@ -1491,7 +1692,7 @@ video {
   border-bottom: 1px solid var(--line);
 }
 
-.booking-contact > div {
+.booking-contact>div {
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -1566,8 +1767,17 @@ video {
     font-size: 0.72rem;
   }
 
-  .booking-hero h1 {
-    font-size: clamp(3rem, 14.5vw, 4.6rem);
+  #booking-title,
+  #agenda-title,
+  #bonus-title,
+  #reserve-title,
+  .booking-hero h1,
+  .booking-section-heading h2,
+  .bonus-copy h2,
+  .reservation-summary h2,
+  .reservation-panel h2 {
+    font-size: clamp(1.95rem, 7vw, 2.75rem) !important;
+    line-height: 0.96 !important;
   }
 
   .booking-intro {
@@ -1583,7 +1793,7 @@ video {
     grid-template-columns: 1fr;
   }
 
-  .booking-timeline li > div {
+  .booking-timeline li>div {
     min-height: auto;
   }
 
@@ -1660,7 +1870,7 @@ video {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.cal-embed-fallback > p {
+.cal-embed-fallback>p {
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -1731,6 +1941,15 @@ video {
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 0 1.75rem rgba(212, 23, 106, 0.08);
   backdrop-filter: blur(18px);
+  cursor: pointer;
+  transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease, width 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-orb:hover,
+.menu-capsule:hover {
+  background: rgba(212, 23, 106, 0.16);
+  border-color: rgba(212, 23, 106, 0.65);
+  box-shadow: 0 0 2.5rem rgba(212, 23, 106, 0.28);
 }
 
 .nav-orb {
@@ -1739,7 +1958,7 @@ video {
   font-size: 0.78rem;
 }
 
-.nav-orb > span:first-child {
+.nav-orb>span:first-child {
   position: relative;
   z-index: 2;
 }
@@ -1750,13 +1969,12 @@ video {
   height: 4rem;
   align-items: center;
   border-radius: 999px;
-  transition: width 420ms cubic-bezier(0.22, 1, 0.36, 1), border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .menu-capsule.is-open {
   width: min(40rem, calc(100vw - 19rem));
-  border-color: rgba(212, 23, 106, 0.42);
-  box-shadow: 0 0 2.5rem rgba(212, 23, 106, 0.14);
+  border-color: rgba(212, 23, 106, 0.65);
+  box-shadow: 0 0 2.5rem rgba(212, 23, 106, 0.28);
 }
 
 .menu-toggle-shell {
@@ -1769,7 +1987,7 @@ video {
   place-items: center;
 }
 
-.menu-toggle-shell > button {
+.menu-toggle-shell>button {
   display: block;
 }
 
@@ -1806,7 +2024,7 @@ video {
   pointer-events: none;
 }
 
-.nav-bubbles > span {
+.nav-bubbles>span {
   position: absolute;
   bottom: -0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -1817,9 +2035,19 @@ video {
 }
 
 @keyframes nav-bubble-rise {
-  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.65); }
-  28% { opacity: 0.75; }
-  100% { opacity: 0; transform: translate3d(0.35rem, -4.5rem, 0) scale(1.15); }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.65);
+  }
+
+  28% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0.35rem, -4.5rem, 0) scale(1.15);
+  }
 }
 
 .hero-section {
@@ -1900,9 +2128,9 @@ video {
 
 .button {
   min-height: 3.55rem;
-  padding: 0.95rem 1.5rem;
-  font-size: 0.82rem;
-  letter-spacing: 0.025em;
+  padding: 0.95rem 1.22em;
+  font-size: 0.88rem;
+  letter-spacing: 0.015em;
 }
 
 .button-primary {
@@ -1960,7 +2188,7 @@ video {
   letter-spacing: -0.065em;
 }
 
-.wave-section .manifesto-content > p:last-child {
+.wave-section .manifesto-content>p:last-child {
   max-width: 56rem;
   font-family: "Space Mono", monospace;
   font-size: clamp(1rem, 1.45vw, 1.25rem);
@@ -1971,14 +2199,11 @@ video {
 .section-heading h2,
 .about-copy h2,
 .contact-section h2 {
-  font-size: clamp(2.45rem, 4.25vw, 4.55rem);
-}
-
-.contact-section h2 {
-  font-size: clamp(2.8rem, 5.7vw, 5.8rem);
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
 }
 
 @media (max-width: 980px) {
+
   .menu-capsule,
   .menu-capsule.is-open {
     width: 3.5rem;
@@ -2001,6 +2226,16 @@ video {
 
   .hero-title-line-shifted {
     margin-left: clamp(0rem, 8vw, 4rem);
+  }
+
+  .hero-video {
+    object-position: 50% 35%;
+    transform: scale(0.8);
+    transform-origin: center 35%;
+  }
+
+  .hero-proof {
+    display: none;
   }
 }
 
@@ -2044,7 +2279,9 @@ video {
   }
 
   .hero-video {
-    object-position: 46% center;
+    object-position: 50% 30%;
+    transform: scale(0.68);
+    transform-origin: center 30%;
   }
 
   .hero-watermark {
@@ -2102,7 +2339,7 @@ video {
 }
 
 /* Proportions pass — bolder KMD mark, calmer hero type, readable body copy */
-.site-shell p:not(.hero-eyebrow):not(.section-label):not(.card-eyebrow):not(.booking-offer):not(.booking-back):not(.interaction-hint) {
+.site-shell p:not(.hero-eyebrow):not(.section-label):not(.card-eyebrow):not(.booking-offer):not(.booking-back):not(.interaction-hint):not(.site-footer p):not(.bonus-note) {
   font-size: clamp(1.06rem, 1.3vw, 1.3rem);
 }
 
@@ -2148,4 +2385,48 @@ video {
   .site-header {
     height: 7.5rem;
   }
+}
+
+/* Custom Neon Pink Cursor */
+@media (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: none !important;
+  }
+}
+
+.custom-cursor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cursor-dot {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px #d4176a, 0 0 18px #d4176a;
+}
+
+.cursor-ring {
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(212, 23, 106, 0.85);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(212, 23, 106, 0.5), inset 0 0 12px rgba(212, 23, 106, 0.2);
+  transition: border-color 160ms ease, background-color 160ms ease;
 }
