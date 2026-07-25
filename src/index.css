@@ -2358,8 +2358,13 @@ h2 {
 
 /* Desktop hero conversion block — positioned in the open space at right */
 @media (min-width: 981px) {
+  .hero-eyebrow {
+    transform: translate(calc(-1 * var(--page-pad)), clamp(9.2rem, 19vh, 12.5rem));
+    margin-bottom: 0;
+  }
+
   .hero-copy h1 {
-    transform: translate(-1.25rem, clamp(12rem, 25vh, 16rem));
+    transform: translate(calc(-1 * var(--page-pad)), clamp(12rem, 25vh, 16rem));
   }
 
   .hero-description,
@@ -2385,6 +2390,11 @@ h2 {
   .brand-link {
     width: 24.5rem;
     height: 12.5rem;
+  }
+
+  .hero-eyebrow {
+    transform: translate(calc(-1 * var(--page-pad)), clamp(9.2rem, 19vh, 12.5rem));
+    margin-bottom: 0;
   }
 
   .hero-copy h1 {
