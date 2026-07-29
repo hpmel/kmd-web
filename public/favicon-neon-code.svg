@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Neon Pink Glow Filters -->
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur1" />
+      <feGaussianBlur stdDeviation="24" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="neon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2a85" />
+      <stop offset="50%" stop-color="#ff007f" />
+      <stop offset="100%" stop-color="#e000ff" />
+    </linearGradient>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120516" />
+      <stop offset="100%" stop-color="#050208" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Squircle Badge -->
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="url(#bg-grad)" stroke="#ff2a85" stroke-width="6" stroke-opacity="0.4" filter="url(#soft-glow)"/>
+
+  <!-- Inner Code Brackets + Slash Symbol < / > -->
+  <g filter="url(#neon-glow)" stroke="url(#neon-grad)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Left Bracket < -->
+    <path d="M 160 176 L 96 256 L 160 336" />
+    <!-- Slash / -->
+    <path d="M 288 144 L 224 368" />
+    <!-- Right Bracket > -->
+    <path d="M 352 176 L 416 256 L 352 336" />
+  </g>
+
+  <!-- Accent Tech Dot -->
+  <circle cx="416" cy="144" r="14" fill="#ff007f" filter="url(#neon-glow)" />
+</svg>

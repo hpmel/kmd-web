@@ -26,4 +26,6 @@ dist-ssr
 # Local tools & deployment
 .remember
 .vercel
+deliverables/
+
 

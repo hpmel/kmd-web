@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <filter id="neon-glow-chip" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur1" />
+      <feGaussianBlur stdDeviation="22" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient id="chip-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff007f" />
+      <stop offset="50%" stop-color="#ff2a85" />
+      <stop offset="100%" stop-color="#ca00ff" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="32" y="32" width="448" height="448" rx="100" fill="#0b0312" stroke="#ff2a85" stroke-opacity="0.35" stroke-width="6" />
+
+  <!-- Processor Outer Body -->
+  <rect x="144" y="144" width="224" height="224" rx="40" fill="#180424" stroke="url(#chip-grad)" stroke-width="12" filter="url(#neon-glow-chip)" />
+
+  <!-- Inner Core Chip -->
+  <rect x="208" y="208" width="96" height="96" rx="20" fill="url(#chip-grad)" filter="url(#neon-glow-chip)" />
+
+  <!-- Circuit Pins & Traces -->
+  <g filter="url(#neon-glow-chip)" stroke="url(#chip-grad)" stroke-width="14" stroke-linecap="round">
+    <!-- Top Pins -->
+    <line x1="200" y1="72" x2="200" y2="144" />
+    <line x1="256" y1="56" x2="256" y2="144" />
+    <line x1="312" y1="72" x2="312" y2="144" />
+    <!-- Bottom Pins -->
+    <line x1="200" y1="368" x2="200" y2="440" />
+    <line x1="256" y1="368" x2="256" y2="456" />
+    <line x1="312" y1="368" x2="312" y2="440" />
+    <!-- Left Pins -->
+    <line x1="72" y1="200" x2="144" y2="200" />
+    <line x1="56" y1="256" x2="144" y2="256" />
+    <line x1="72" y1="312" x2="144" y2="312" />
+    <!-- Right Pins -->
+    <line x1="368" y1="200" x2="440" y2="200" />
+    <line x1="368" y1="256" x2="456" y2="256" />
+    <line x1="368" y1="312" x2="440" y2="312" />
+  </g>
+</svg>
