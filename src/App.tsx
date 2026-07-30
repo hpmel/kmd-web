@@ -166,16 +166,6 @@ function App() {
                 </a>
               </div>
             </motion.div>
-
-            <motion.ul
-              className="hero-proof"
-              aria-label="Points clés"
-              initial={reduceMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: reduceMotion ? 0 : 0.8, delay: 0.55 }}
-            >
-              {t.hero.proof.map((item) => <li key={item}>{item}</li>)}
-            </motion.ul>
           </div>
 
           <p className="interaction-hint">
